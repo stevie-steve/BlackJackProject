@@ -1,31 +1,53 @@
 package com.skilldistillery.blackjack;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Deck {
-List <Card> cards = new ArrayList<>();
+	private List<Card> cards;
 
-//need a deck
-//must create 4 cards lists of each suit?
+	public Deck() {
+		cards = createDeck();
+	}
 
-private List<Card> deck(){{
-	super(); 
-	this.deck = deck;
-}
+	private List<Card> createDeck() {
+		List<Card> deck = new ArrayList<>(52);
+		for (Suit s : Suit.values()) {
+			for (Rank r : Rank.values()) {
+				deck.add(new Card(r, s));
+			}
+		}
+		return deck;
+	}
 
-public int checkDeckSize() {
-	
-	return cards.size(); //num cards in deck .size
-}
+	public int checkDeckSize() {
+		return cards.size();
+	}
 
-public Card dealCard(){
-	
-	return cards.remove(0); //removes card (.remove)
-}
+	public void shuffle() {
+		Collections.shuffle(cards);
+	}
 
-public void shuffle() {
-	return 0; //collections.shuffle()
-	
-}
+	public Card dealCard() {
+		return cards.remove(0);
+	}
+
+	public void dealCard(Hand hand) {
+		 hand.addCard(cards.remove(0));
+	}
+
+	public void fanDeck() {
+		for (Card card : cards) {
+			System.out.println(card.toString());
+		}
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
+	}
 }

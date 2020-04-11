@@ -1,8 +1,5 @@
 package com.skilldistillery.blackjack;
 
-import com.skilldistillery.enums.drills.cards.Rank;
-import com.skilldistillery.enums.drills.cards.Suit;
-
 public class Card {
   private Rank rank;
   private Suit suit;
