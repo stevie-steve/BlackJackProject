@@ -124,10 +124,7 @@ public class BJApp {
 			System.exit(0);
 		}
 
-		// while (total > 21) {
-		// if (choice == 1) {
-		// }
-		// }
+
 //		System.out.println('\u2665');
 //		System.out.println('\u2664');
 //		System.out.println('\u2667');
