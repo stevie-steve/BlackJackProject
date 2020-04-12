@@ -31,7 +31,8 @@ public class BJApp {
 			dealer.addCard(dealer.dealCard());
 		}
 		System.out.println(player.toString());
-		System.out.println(dealer.toString()); // call a method in dealer
+		dealer.dealerHandHideFirst();
+	//	System.out.println(dealer.toString()); // call a method in dealer
 		System.out.println(dealer.checkDeckSize());
 
 		if (player.getPlayerHand().isBlackjack() && dealer.getDealerHand().isBlackjack()) {
@@ -79,15 +80,18 @@ public class BJApp {
 			}
 		}
 		System.out.println("a");
-		while (!Dealer.getDealerHand().isBust()) {
-			if (Dealer.getDealerHand().getHandValue()<=17) {
+		while (!dealer.getDealerHand().isBust()) {
+
+			if ((dealer.getDealerHand().getHandValue()<17)){
 				dealer.addCard(dealer.dealCard());
+				System.out.println("Dealer hits...");
 				System.out.println(dealer.toString());
-				System.out.println(Dealer.getDealerHand().getHandValue());
+				System.out.println(dealer.getDealerHand().getHandValue());
 			}
-			if (Dealer.getDealerHand().getHandValue()>17) {
+			
+			if ((dealer.getDealerHand().getHandValue()>17)){
 				System.out.println(dealer.toString());
-				System.out.println(Dealer.getDealerHand().getHandValue());
+				System.out.println(dealer.getDealerHand().getHandValue());
 				break;
 			}
 		}

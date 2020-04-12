@@ -4,34 +4,31 @@ import java.util.Collections;
 
 public class Dealer {
 
-	private BJHand DealerHand;
+	private BJHand dealerHand;
 	Deck deck = new Deck();
 
 	public Dealer() {
-		DealerHand = new BJHand();
+		dealerHand = new BJHand();
 	}
 
 	@Override
 	public String toString() {
 		
-		return "Dealer: " + DealerHand.toString();
+		return "Dealer: " + dealerHand.toString();
 	}
 
 	public BJHand getDealerHand() {
 		
-		for (int i = 0; i < DealerHand.size; i++) {
-			
-	}
-		return DealerHand;
+		return dealerHand;
 	}
 	
 
 	public void setDealerHand(BJHand DealerHand) {
-		this.DealerHand = DealerHand;
+		this.dealerHand = DealerHand;
 	}
 
 	public void addCard(Card card) {
-		DealerHand.addCard(card);
+		dealerHand.addCard(card);
 	}
 
 	public Card dealCard(){
@@ -45,5 +42,19 @@ public class Dealer {
 	public void shuffle() {
 		deck.shuffle();
 	}
-	
+	public void fanDeck() {
+		
+	}
+	public void dealerHandHideFirst() {
+		for (int i = 0; i < getDealerHand().cards.size(); i++) {
+			if (i>0) {
+			System.out.println("Dealer: " + getDealerHand());
+			}
+			else {
+				System.out.println("Dealer: vdfevbdfbvdfv" );
+				//getDealerHand();
+			}
+			
+		}
+	}
 }
