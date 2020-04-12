@@ -32,9 +32,9 @@ public class BJApp {
 		}
 		System.out.println(player.toString());
 		dealer.dealerHandHideFirst();
-	//	System.out.println(dealer.toString()); // call a method in dealer
+		// System.out.println(dealer.toString()); // call a method in dealer
 		System.out.println(dealer.checkDeckSize());
-
+ 
 		if (player.getPlayerHand().isBlackjack() && dealer.getDealerHand().isBlackjack()) {
 			System.out.println("PUSH");
 			System.exit(0);
@@ -44,59 +44,75 @@ public class BJApp {
 			System.exit(0);
 		}
 		if (!player.getPlayerHand().isBlackjack() && dealer.getDealerHand().isBlackjack()) {
+			System.out.println(dealer.toString());
 			System.out.println("BLACKJACK. DEALER WINS");
 			System.exit(0);
 		}
-
+ 
 		System.out.println("Players total is " + player.getPlayerHand().getHandValue() + ". "
 				+ "Would you like to:\n1. Hit \n2. Stay");
 		int choice = w.nextInt();
 
 		while (!player.getPlayerHand().isBust()) {
-			if (choice ==1) {
+			if (choice == 1) {
 				player.addCard(dealer.dealCard());
 				System.out.println(player.toString());
-				System.out.println("Players total is " + player.getPlayerHand().getHandValue()+".");
+				System.out.println("Players total is " + player.getPlayerHand().getHandValue() + ".");
 				if (player.getPlayerHand().isBust()) {
 					System.out.println("You Busted. Loser!");
 					System.exit(0);
-				}
-				else {
-				 System.out.println("Would you like to:\n1. Hit \n2. Stay");
-					 choice = w.nextInt();
+				} else {
+					System.out.println("Would you like to:\n1. Hit \n2. Stay");
+					choice = w.nextInt();
+					System.out.println();
 				}
 			}
 			if (choice == 2) {
 				System.out.println("You chose to hold.");
 				System.out.println(player.toString());
-				System.out.println("Players total is " + player.getPlayerHand().getHandValue() +".");
+				System.out.println("Players total is " + player.getPlayerHand().getHandValue() + ".");
+				System.out.println();
 				break;
-			
-			}
-			if (choice!=2 && choice!=1) {
-				System.out.println("Be careful with your choices here. This is Vegas! 1 or 2");
-				 System.out.println("Would you like to:\n1. Hit \n2. Stay");
-				 choice = w.nextInt();
-			}
-		}
-		System.out.println("a");
-		while (!dealer.getDealerHand().isBust()) {
 
-			if ((dealer.getDealerHand().getHandValue()<17)){
-				dealer.addCard(dealer.dealCard());
-				System.out.println("Dealer hits...");
-				System.out.println(dealer.toString());
-				System.out.println(dealer.getDealerHand().getHandValue());
 			}
-			
-			if ((dealer.getDealerHand().getHandValue()>17)){
-				System.out.println(dealer.toString());
-				System.out.println(dealer.getDealerHand().getHandValue());
-				break;
+			if (choice != 2 && choice != 1) {
+				System.out.println("Be careful with your choices here. This is Vegas! 1 or 2");
+				System.out.println("Would you like to:\n1. Hit \n2. Stay");
+				choice = w.nextInt();
 			}
 		}
+		System.out.println(dealer.checkDeckSize());
 		
-		 if (player.getPlayerHand().getHandValue() > dealer.getDealerHand().getHandValue()) {
+		System.out.println(dealer.toString());
+		System.out.println("Dealers total value is " + dealer.getDealerHand().getHandValue() + ".");
+	
+		while (!dealer.getDealerHand().isBust()){ //&& (dealer.getDealerHand().getHandValue() > 17)) {
+			
+			if ((dealer.getDealerHand().getHandValue() < 17)) {
+				dealer.addCard(dealer.dealCard());
+				System.out.println("Dealer hits...\n");
+				
+				System.out.println(dealer.toString());
+				System.out.println("Dealers total value is " + dealer.getDealerHand().getHandValue() + ".");
+				System.out.println();
+			}
+
+			if ((dealer.getDealerHand().getHandValue() >= 17) && dealer.getDealerHand().getHandValue() <22) {
+				System.out.println(dealer.toString());
+				System.out.println("Dealers total value is " +dealer.getDealerHand().getHandValue() + ".");
+				System.out.println();
+ 				break;
+			}
+		}
+			if  (dealer.getDealerHand().isBust()) {
+				System.out.println("Dealer Busts. Wou Win!");
+				System.exit(0);
+			
+		}
+		System.out.println(dealer.checkDeckSize());
+		
+		
+		if (player.getPlayerHand().getHandValue() > dealer.getDealerHand().getHandValue()) {
 			System.out.println("PLAYER WIN");
 			System.exit(0);
 		}
@@ -109,9 +125,6 @@ public class BJApp {
 			System.exit(0);
 		}
 
-		
-		
-		
 		// while (total > 21) {
 		// if (choice == 1) {
 		// }

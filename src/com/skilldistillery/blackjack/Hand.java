@@ -23,9 +23,14 @@ public abstract class Hand {
 	
 	public abstract int getHandValue();
 
+	public Card getCard() {
+		return cards.get(1);
+	}
+	
+	
 	@Override
 	public String toString() {
-		return "Hand [cards=" + cards + "]";
+		return "Hand " + cards ;
 	}
 	
 		
