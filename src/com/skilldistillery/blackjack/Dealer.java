@@ -13,12 +13,18 @@ public class Dealer {
 
 	@Override
 	public String toString() {
+		
 		return "Dealer: " + DealerHand.toString();
 	}
 
 	public BJHand getDealerHand() {
+		
+		for (int i = 0; i < DealerHand.size; i++) {
+			
+	}
 		return DealerHand;
 	}
+	
 
 	public void setDealerHand(BJHand DealerHand) {
 		this.DealerHand = DealerHand;
@@ -39,4 +45,5 @@ public class Dealer {
 	public void shuffle() {
 		deck.shuffle();
 	}
+	
 }

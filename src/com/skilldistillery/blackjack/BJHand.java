@@ -1,33 +1,44 @@
 package com.skilldistillery.blackjack;
 
-public class BJHand extends Hand{
+public class BJHand extends Hand {
 
-	
 	public BJHand() {
 		super();
-		// TODO Auto-generated constructor stub
-	}
-	
-	@Override
-	public int getHandValue() {
-		return 0;
 	}
 
-	public boolean isBlackjack() {	
-	return true;
+	@Override
+	public int getHandValue() {
+		int handValue = 0;
+		for (Card card : cards) {
+			handValue += card.getValue();
+		}
+		
+		return handValue;
 	}
-	
+
+	public boolean isBlackjack() {
+		if (getHandValue() == 21) {
+			return true;			
+		} else {
+			return false;
+		}
+	}
+
 	public boolean isBust() {
-		//playerhand= >21
-		return true;
+		if (getHandValue() >21){
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
-	
-	public boolean isHard() {
-		return true;
-	}
-	
-	public boolean isSoft() {
-		return true;
-	}
-	
+
+//	public boolean isHard() {
+//		return true;
+//	}
+
+//	public boolean isSoft() {
+//		return true;
+//	}
+
 }
