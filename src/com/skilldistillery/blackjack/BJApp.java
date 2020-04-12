@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class BJApp {
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 		BJApp bJapp = new BJApp();
 
@@ -18,10 +17,10 @@ public class BJApp {
 		Player player = new Player();
 		Dealer dealer = new Dealer();
 		System.out.println("Welcome to BLACKJACK \nHere comes your hand.\n");
-		//System.out.println(dealer.checkDeckSize());// size of deck before dealing
-		//dealer.fanDeck();// to see whole deck (ordered)
+		// System.out.println(dealer.checkDeckSize());// size of deck before dealing
+		// dealer.fanDeck();// to see whole deck (ordered)
 		dealer.shuffle();
-		//dealer.fanDeck();// to see whole deck (shuffled)
+		// dealer.fanDeck();// to see whole deck (shuffled)
 
 		for (int i = 0; i < 2; i++) {
 			player.addCard(dealer.dealCard());
@@ -31,8 +30,8 @@ public class BJApp {
 		System.out.println();
 		dealer.dealerHandHideFirst();// shows just first card, never used again afterwards
 		System.out.println();
-		//System.out.println(dealer.checkDeckSize()); //current size of unused deck 
- 
+		// System.out.println(dealer.checkDeckSize()); //current size of unused deck
+
 		if (player.getPlayerHand().isBlackjack() && dealer.getDealerHand().isBlackjack()) {
 			System.out.println("PUSH");
 			System.exit(0);
@@ -46,12 +45,12 @@ public class BJApp {
 			System.out.println("BLACKJACK. DEALER WINS");
 			System.exit(0);
 		}
- 
+
 		System.out.println("Players total is " + player.getPlayerHand().getHandValue() + ". "
 				+ "Would you like to:\n1. Hit \n2. Stay");
 		int choice = w.nextInt();
 
-		while (!player.getPlayerHand().isBust()) {
+		while (!player.getPlayerHand().isBust() || (player.getPlayerHand().getHandValue() != 21)) {
 			if (choice == 1) {
 				player.addCard(dealer.dealCard());
 				System.out.println(player.toString());
@@ -59,6 +58,9 @@ public class BJApp {
 				if (player.getPlayerHand().isBust()) {
 					System.out.println("You Busted. Loser!");
 					System.exit(0);
+				} else if (player.getPlayerHand().getHandValue() == 21) {
+					System.out.println("You stay at 21. House rules. \n");
+					break;
 				} else {
 					System.out.println("Would you like to:\n1. Hit \n2. Stay");
 					choice = w.nextInt();
@@ -79,38 +81,40 @@ public class BJApp {
 				choice = w.nextInt();
 			}
 		}
-		//System.out.println(dealer.checkDeckSize()); //current size of unused deck 
-		
+
+		// System.out.println(dealer.checkDeckSize()); //current size of unused deck
+
 		System.out.println(dealer.toString());
 		System.out.println("Dealers total value is " + dealer.getDealerHand().getHandValue() + ".");
-	
-		while (!dealer.getDealerHand().isBust()){ 
-			
+
+		while (!dealer.getDealerHand().isBust()) {
+
 			if ((dealer.getDealerHand().getHandValue() < 17)) {
 				dealer.addCard(dealer.dealCard());
 				System.out.println("Dealer hits...\n");
-				
+
 				System.out.println(dealer.toString());
 				System.out.println("Dealers total value is " + dealer.getDealerHand().getHandValue() + ".");
 				System.out.println();
 			}
 
-			if ((dealer.getDealerHand().getHandValue() >= 17) && dealer.getDealerHand().getHandValue() <22) {
+			if ((dealer.getDealerHand().getHandValue() >= 17) && dealer.getDealerHand().getHandValue() < 22) {
 				System.out.println("Dealer stays.");
 				System.out.println(dealer.toString());
-				System.out.println("Dealers total value is " +dealer.getDealerHand().getHandValue() + ".");
+				System.out.println("Dealers total value is " + dealer.getDealerHand().getHandValue() + ".");
 				System.out.println();
- 				break;
+				break;
 			}
 		}
-			if  (dealer.getDealerHand().isBust()) {
-				System.out.println("Dealer Busts. Wou Win!");
-				System.exit(0);
-			
+		if (dealer.getDealerHand().isBust()) {
+			System.out.println("Dealer Busts. Wou Win!");
+			System.exit(0);
+
 		}
-		//System.out.println(dealer.checkDeckSize());//current size of unused deck 
 		
 		
+		// System.out.println(dealer.checkDeckSize());//current size of unused deck
+
 		if (player.getPlayerHand().getHandValue() > dealer.getDealerHand().getHandValue()) {
 			System.out.println("PLAYER WIN");
 			System.exit(0);
@@ -123,7 +127,6 @@ public class BJApp {
 			System.out.println("PUSH");
 			System.exit(0);
 		}
-
 
 //		System.out.println('\u2665');
 //		System.out.println('\u2664');
