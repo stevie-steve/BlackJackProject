@@ -17,23 +17,21 @@ public class BJApp {
 		Scanner w = new Scanner(System.in);
 		Player player = new Player();
 		Dealer dealer = new Dealer();
-		System.out.println(dealer.checkDeckSize());
-		// for (Card card : deck.getCards()) {
-		// System.out.println(card.toString()); // this exposed the cards to everyone
-		// (BJApp class)
-		// }
-		// deck.fanDeck(); //or, this keeps the card in the Deck file
+		System.out.println("Welcome to BLACKJACK \nHere comes your hand.\n");
+		//System.out.println(dealer.checkDeckSize());// size of deck before dealing
+		//dealer.fanDeck();// to see whole deck (ordered)
 		dealer.shuffle();
-		// deck.fanDeck();
+		//dealer.fanDeck();// to see whole deck (shuffled)
 
 		for (int i = 0; i < 2; i++) {
 			player.addCard(dealer.dealCard());
 			dealer.addCard(dealer.dealCard());
 		}
 		System.out.println(player.toString());
-		dealer.dealerHandHideFirst();
-		// System.out.println(dealer.toString()); // call a method in dealer
-		System.out.println(dealer.checkDeckSize());
+		System.out.println();
+		dealer.dealerHandHideFirst();// shows just first card, never used again afterwards
+		System.out.println();
+		//System.out.println(dealer.checkDeckSize()); //current size of unused deck 
  
 		if (player.getPlayerHand().isBlackjack() && dealer.getDealerHand().isBlackjack()) {
 			System.out.println("PUSH");
@@ -81,12 +79,12 @@ public class BJApp {
 				choice = w.nextInt();
 			}
 		}
-		System.out.println(dealer.checkDeckSize());
+		//System.out.println(dealer.checkDeckSize()); //current size of unused deck 
 		
 		System.out.println(dealer.toString());
 		System.out.println("Dealers total value is " + dealer.getDealerHand().getHandValue() + ".");
 	
-		while (!dealer.getDealerHand().isBust()){ //&& (dealer.getDealerHand().getHandValue() > 17)) {
+		while (!dealer.getDealerHand().isBust()){ 
 			
 			if ((dealer.getDealerHand().getHandValue() < 17)) {
 				dealer.addCard(dealer.dealCard());
@@ -98,6 +96,7 @@ public class BJApp {
 			}
 
 			if ((dealer.getDealerHand().getHandValue() >= 17) && dealer.getDealerHand().getHandValue() <22) {
+				System.out.println("Dealer stays.");
 				System.out.println(dealer.toString());
 				System.out.println("Dealers total value is " +dealer.getDealerHand().getHandValue() + ".");
 				System.out.println();
@@ -109,7 +108,7 @@ public class BJApp {
 				System.exit(0);
 			
 		}
-		System.out.println(dealer.checkDeckSize());
+		//System.out.println(dealer.checkDeckSize());//current size of unused deck 
 		
 		
 		if (player.getPlayerHand().getHandValue() > dealer.getDealerHand().getHandValue()) {

@@ -44,25 +44,14 @@ public class Dealer {
 		deck.shuffle();
 	}
 	public void fanDeck() {
-		
+		deck.fanDeck();
 	}
+	
 	public void dealerHandHideFirst() {
 		System.out.println("Dealer: Hand [DOWN CARD , " + dealerHand.getCard() + "]");
 	}
 		
-//		
-//		for (int i= 1; i < dealerHand.cards.size()-1; i++) {
-//			
-//		}
-//		
-//		for (int i = 0; i < getDealerHand().cards.size(); i++) {
-//			if (i>0) {
-//			System.out.println("Dealer: " + getDealerHand());
-//			}
-//			else {
-//				System.out.println("Dealer: vdfevbdfbvdfv" );
-//				//getDealerHand();
-			
+
 			
 		
 	
