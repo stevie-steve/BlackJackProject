@@ -15,11 +15,10 @@ If Player and Dealer both do not bust, the values are then compared, declaring t
 
 ### Applications Used
 
-| ------ |
-| GitHub/git |
-| Eclipse |
-| Java  |
-| Terminal |
+1.  GitHub/git
+2.  Eclipse 
+3.  Java  
+4.  Terminal
 
 ### Lessons Learned
 1. I feel I was finally able to grasp some of the concepts of OOP that i was lacking in during the class week. The issue I was mostly having was the ability to call methods from different files, and keep track of where i was in the development of the program.  It was very easy to plunge down a certain path and then forget where/why I was there in the first place. I mitigated that confusion by keeping a running track on a piece of paper so I was able to refer back as for why I went in that direction in the first place.   
